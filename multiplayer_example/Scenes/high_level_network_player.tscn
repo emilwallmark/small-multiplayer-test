@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cs71xccy5weso" path="res://icon.svg" id="2_4mcwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x02jt"]
-size = Vector2(119, 122)
+size = Vector2(109, 112)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_30ubl"]
 properties/0/path = NodePath(".:position")
@@ -12,12 +12,14 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [node name="HighLevelNetworkPlayer" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_hlxej")
 
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_4mcwi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_x02jt")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

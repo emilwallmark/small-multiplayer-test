@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://52nt74axdwhd"]
+
+[ext_resource type="Script" uid="uid://b5i88aokhl8rm" path="res://Scripts/test_world.gd" id="1_skmq4"]
+[ext_resource type="Texture2D" uid="uid://crtvtcy76eara" path="res://grass.png" id="2_au00k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_au00k"]
+size = Vector2(804.7, 88.0781)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_707cn"]
+size = Vector2(91.2913, 438.438)
+
+[node name="World" type="Node"]
+script = ExtResource("1_skmq4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 257.0
+offset_right = -446.0
+offset_bottom = -257.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Host" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="AddressEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Entre Address to Join Here"
+alignment = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://b1xt3tg6eehnd")
+spawn_path = NodePath("..")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(645, 353)
+scale = Vector2(1.665, 1.665)
+texture = ExtResource("2_au00k")
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(645, 353)
+scale = Vector2(1.665, 1.665)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(6.65918, -256.456)
+shape = SubResource("RectangleShape2D_au00k")
+debug_color = Color(0.989139, 0, 0.293947, 0.42)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2"]
+position = Vector2(5.40539, 265.465)
+shape = SubResource("RectangleShape2D_au00k")
+debug_color = Color(0.989139, 0, 0.293947, 0.42)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3"]
+position = Vector2(-433.634, 1.8018)
+shape = SubResource("RectangleShape2D_707cn")
+debug_color = Color(0.975538, 0, 0.41865, 0.42)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4"]
+position = Vector2(437.838, 0.600601)
+shape = SubResource("RectangleShape2D_707cn")
+debug_color = Color(0.975538, 0, 0.41865, 0.42)
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
